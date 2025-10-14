@@ -6,7 +6,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-
+server:
+  servlet:
+      session:
+        cookie:
+          same-site: strict
 security:
   jwt:
     private-key-pem: classpath:sec/jwt_pkcs8.pem

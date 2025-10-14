@@ -131,7 +131,7 @@ public class LoginService {
 	}
 
 	private void setRefreshCookie(HttpServletResponse res, String rawValue) {
-		ResponseCookie cookie = ResponseCookie.from("refresh_token", rawValue).httpOnly(true)// .secure(true)
+		ResponseCookie cookie = ResponseCookie.from("refresh_token", rawValue).httpOnly(true).secure(false)
 				.sameSite("Strict").path("/api/v1/auth/refresh") // only refresh endpoint reads it
 				.maxAge(Duration.ofDays(30)).build();
 		res.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
