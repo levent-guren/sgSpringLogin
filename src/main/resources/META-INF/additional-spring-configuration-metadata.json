@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "security.jwt.private-key-pem",
+    "type": "java.lang.String",
+    "description": "A description for 'security.jwt.private-key-pem'"
+  },
+  {
+    "name": "security.jwt.public-key-pem",
+    "type": "java.lang.String",
+    "description": "A description for 'security.jwt.public-key-pem'"
+  },
+  {
+    "name": "security.jwt.ttl",
+    "type": "java.lang.String",
+    "description": "A description for 'security.jwt.ttl'"
+  },
+  {
+    "name": "security.keystore.path",
+    "type": "java.lang.String",
+    "description": "A description for 'security.keystore.path'"
+  },
+  {
+    "name": "security.keystore.alias",
+    "type": "java.lang.String",
+    "description": "A description for 'security.keystore.alias'"
+  },
+  {
+    "name": "security.keystore.dbpass-alias",
+    "type": "java.lang.String",
+    "description": "A description for 'security.keystore.dbpass-alias'"
+  }
+]}

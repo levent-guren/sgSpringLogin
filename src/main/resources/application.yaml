@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@192.168.209.132:1521/orcl.example.com
+    username: hr
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+security:
+  jwt:
+    private-key-pem: classpath:sec/jwt_pkcs8.pem
+    public-key-pem: classpath:sec/jwt_pub.pem
+    ttl: 50
+
+  keystore:
+    path: classpath:sec/keystore.p12
+    alias: myalias
+    dbpass-alias: db.password

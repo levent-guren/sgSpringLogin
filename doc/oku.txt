@@ -1,0 +1,14 @@
+# PKCS#8 private key
+openssl genrsa -out jwt.key 4096
+openssl pkcs8 -topk8 -inform PEM -in jwt.key -out jwt_pkcs8.pem -nocrypt
+# public key
+openssl rsa -in jwt.key -pubout -out jwt_pub.pem
+# sertifika(git bash ile olmayacak)
+"\Program Files\Git\usr\bin\openssl.exe" req -new -x509 -key jwt_pkcs8.pem -subj '/CN=login.sg.gov.tr/O=Yazılım/C=TR' -days 3650 -out cert.pem
+# keystore
+openssl pkcs12 -export -inkey jwt_pkcs8.pem -in cert.pem -name "myalias" -out keystore.p12
+
+# database password(question is the db password)
+keytool -importpass -alias db.password -storetype PKCS12 -keystore keystore.p12 
+# remove database password(for renew)
+keytool -delete -alias db.password -keystore keystore.p12 -storetype PKCS12 
