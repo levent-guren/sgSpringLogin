@@ -35,6 +35,8 @@ public class HibernateConf {
 		config.setJdbcUrl(url);
 		config.setUsername(username);
 		config.setPassword(securityService.getDBPassword());
+		System.out.println("user:" + username);
+		System.out.println("pass:" + securityService.getDBPassword());
 		return new HikariDataSource(config);
 	}
 

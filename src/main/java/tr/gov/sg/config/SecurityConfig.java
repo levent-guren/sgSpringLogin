@@ -52,15 +52,15 @@ public class SecurityConfig {
 	}
 
 	@Bean
-	CorsConfigurationSource corsConfigurationSource() {
-		var c = new CorsConfiguration();
-		c.addAllowedOriginPattern("http://localhost:4200");
-		c.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
-		c.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-XSRF-TOKEN"));
-		c.setAllowCredentials(true);
-		c.setExposedHeaders(List.of("Set-Cookie"));
-		var source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", c);
+	public CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOriginPatterns(List.of("http://localhost:4200"));
+		configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+		configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-XSRF-TOKEN"));
+		configuration.setAllowCredentials(true);
+		configuration.setExposedHeaders(List.of("Set-Cookie"));
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
 		return source;
 	}
 

@@ -131,15 +131,15 @@ public class LoginService {
 	}
 
 	private void setRefreshCookie(HttpServletResponse res, String rawValue) {
-		ResponseCookie cookie = ResponseCookie.from("refresh_token", rawValue).httpOnly(true).secure(false)
-				.sameSite("Strict").path("/api/v1/auth/refresh") // only refresh endpoint reads it
+		ResponseCookie cookie = ResponseCookie.from("refresh_token", rawValue).httpOnly(true).secure(true)
+				.sameSite("None").path("/api/v1/auth/refresh") // only refresh endpoint reads it
 				.maxAge(Duration.ofDays(30)).build();
 		res.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
 	}
 
 	private void clearRefreshCookie(HttpServletResponse res) {
-		ResponseCookie cookie = ResponseCookie.from("refresh_token", "").httpOnly(true)
-				/* .secure(true) */.sameSite("Strict").path("/api/auth/refresh").maxAge(0).build();
+		ResponseCookie cookie = ResponseCookie.from("refresh_token", "").httpOnly(true).secure(true).sameSite("None")
+				.path("/api/auth/refresh").maxAge(0).build();
 		res.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
 	}
 }

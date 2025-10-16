@@ -1,0 +1,8 @@
+$ which keytool
+/c/java/eclipse/eclipse2025R09/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.8.v20250724-1412/jre/bin/
+keytool
+
+$ which openssl
+/mingw64/bin/openssl
+
+https://slproweb.com/products/Win32OpenSSL.html

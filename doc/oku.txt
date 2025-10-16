@@ -12,3 +12,7 @@ openssl pkcs12 -export -inkey jwt_pkcs8.pem -in cert.pem -name "myalias" -out ke
 keytool -importpass -alias db.password -storetype PKCS12 -keystore keystore.p12 
 # remove database password(for renew)
 keytool -delete -alias db.password -keystore keystore.p12 -storetype PKCS12 
+
+# localhost için sertifika oluşturma
+keytool -genkeypair -alias localhost -keyalg RSA -keysize 2048 -validity 3650 -storetype PKCS12 -keystore localhost.p12 -st
+orepass changeit -dname "CN=localhost, OU=Dev, O=Local, L=Ankara, ST=TR, C=TR" -ext "SAN=dns:localhost,ip:127.0.0.1,ip:::1"
